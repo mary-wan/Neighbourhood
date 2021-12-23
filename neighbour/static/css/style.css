@@ -1,21 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Aladin&family=Lato&display=swap');
 
 @font-face {
-    font-family: "Alex";
-    src: url("fonts/AlexBrush-Regular.ttf");
-}
-@font-face {
     font-family: "BLKCHCRY";
     src: url("fonts/BLKCHCRY.TTF");
-}
-@font-face {
-    font-family: 'abbeyline';
-    src: local('Abbeyline'),
-        url('fonts/Abbeyline.ttf')format("truetype");
-}
-@font-face {
-    font-family: "WindyRainDemo";
-    src: url("fonts/WindyRainDemo.ttf");
 }
 @font-face {
     font-family: "Ginga";
@@ -24,10 +11,13 @@
 body{
     font-family: 'lato', sans-serif;
 }
-
+.navbar{
+    /* background-color:#161c2d !important;  */
+    background-color:rgb(4, 63, 63)!important; 
+}
 .background{
     background-image: url(/static/photos/hood1.webp);
-    height: 500px;
+    height: 570px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: white;
@@ -46,15 +36,28 @@ body{
     margin-top: 0% !important;
    
 }
+.neig{
+    font-family: 'BLKCHCRY', sans-serif;
+    color: orange !important;
+    font-size: 25px !important;  
+}
 .join{
     background-color: orange;
-    color: white;
+   
 }
+footer{
+    color: white !important;
+    background-color:rgb(4, 63, 63)!important; 
+}
+
+
+
+
+
 
 
 @media only screen and (min-width: 768px) {
 
-    
 }
 @media only screen and (max-width: 768px) {
     .intro{
