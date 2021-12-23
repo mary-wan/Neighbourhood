@@ -10,6 +10,7 @@
 }
 body{
     font-family: 'lato', sans-serif;
+    overflow-x:hidden !important;
 }
 .navbar{
     /* background-color:#161c2d !important;  */
@@ -19,14 +20,14 @@ body{
     font-weight: bold !important;
 }
 .background{
-    background-image: url(/static/photos/hood.webp);
-    height: 600px;
+    background-image: url(/static/photos/hood1.webp);
+    height: 580px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: white;
 }
 .intro{
-    padding-top: 9%;
+    padding-top: 5%;
     font-size: 60px !important;
     padding-bottom: 0 !important;
     margin-bottom: 0% !important;
@@ -189,8 +190,14 @@ footer{
 .site{
     margin-top: 12px;
 }
+.profile-img{
+    padding: 0% !important;
+    margin: 0% !important;
+}
 /* to here */
-
+.black{
+    color: black;
+}
 
 
 
