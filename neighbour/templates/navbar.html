@@ -7,11 +7,34 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right ml-auto mr-5"> 
+
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+            <a data-toggle="modal" data-target="#post-upload" class=" btn btn-sm btn-color site mr-2"> SUMBIT YOUR SITE!</a>
+        </li>
+        <li class="nav-item active">
+          <a href="/api" class=" btn btn-sm btn-color site mr-2"> API</a>
+      </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="{% static 'photos/logo.png' %}"  alt= "" class="rounded-circle user profile-img"></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="#" class="nav-link text-dark dropdown-item"><i class="fas fa-user"></i> Profile</a>
+              <!-- <a href="/accounts/password/change" class="nav-link text-dark dropdown-item"><i class="fas fa-cog"></i> Settings</a> -->
+              <a href="/logout" class="nav-link text-dark dropdown-item">Logout <i class="fas fa-sign-out-alt"></i></a>
+              
+            </div>
+          </li>
+        {% else %}
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        <!-- <li class="nav-item active "><a class="nav-link mt-1 mb-1" href="{%url 'register'%}">Sign up</a></li> -->
+        {%endif%}
+       
+    </ul>
     </div>
   </nav>
