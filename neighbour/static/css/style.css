@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Lato&display=swap');
+
+@font-face {
+    font-family: "Alex";
+    src: url("fonts/AlexBrush-Regular.ttf");
+}
+@font-face {
+    font-family: "BLKCHCRY";
+    src: url("fonts/BLKCHCRY.TTF");
+}
+@font-face {
+    font-family: 'abbeyline';
+    src: local('Abbeyline'),
+        url('fonts/Abbeyline.ttf')format("truetype");
+}
+@font-face {
+    font-family: "WindyRainDemo";
+    src: url("fonts/WindyRainDemo.ttf");
+}
+@font-face {
+    font-family: "Ginga";
+    src: url("fonts/Ginga.ttf");
+}
+body{
+    font-family: 'lato', sans-serif;
+}
+
+.background{
+    background-image: url(/static/photos/hood1.webp);
+    height: 500px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+}
+.intro{
+    padding-top: 5%;
+    font-size: 60px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0% !important;
+}
+.nei{
+    font-family: 'Ginga', sans-serif;
+    font-size: 120px;
+    color: orange;
+    padding-top: 0 !important;
+    margin-top: 0% !important;
+   
+}
+.join{
+    background-color: orange;
+    color: white;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    
+}
+@media only screen and (max-width: 768px) {
+    .intro{
+        font-size: 60px;
+    }
+    .nei{
+        font-size: 80px;
+    }
+}

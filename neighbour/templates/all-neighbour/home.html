@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% block content%}
+{{block.super}}
+<div class="container-fluid background text-center">
+    <h1 class="font-weight-bold text-center intro">WELCOME TO THE</h1>
+    <h1 class="nei">Neighbourhood</h1>
+    <h6 class="intro1">This is a place where you get to know what is happening in your neighbourhood <br>
+         be in the loop about everything happening in your neighborhood
+    </h6>
+    <button class="btn mt-4 join pl-4 pr-4">Join Us</button>
+</div>
+
+{%endblock%}
