@@ -26,8 +26,15 @@ body{
     background-repeat: no-repeat;
     color: white;
 }
+.sign{
+    background-image: url(/static/photos/sign.png);
+    height: 630px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 .intro{
-    padding-top: 5%;
+    padding-top: 6%;
     font-size: 60px !important;
     padding-bottom: 0 !important;
     margin-bottom: 0% !important;
@@ -55,10 +62,10 @@ footer{
 }
 /* form here */
 .right{
-    margin-left: 28% !important;
+    margin-left: 34% !important;
 }
 .right-1{
-    margin-left: 35% !important;
+    margin-left: 50% !important;
 }
 .btn-color{
     background-color: rgb(4, 63, 63) !important;
@@ -168,7 +175,7 @@ footer{
   }
   .loginBtn--facebook:before {
     border-right: #364e92 1px solid;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px no-repeat;
   }
   .loginBtn--facebook:hover,
   .loginBtn--facebook:focus {
@@ -198,7 +205,11 @@ footer{
 .black{
     color: black;
 }
-
+/* .hood-cont{
+    border: solid 2px;
+    border-color: gainsboro;
+    border-radius: 5px;
+} */
 
 
 
@@ -215,7 +226,8 @@ footer{
     .right{
         margin-left: 5% !important;
     }
-    .right-one{
+    .right-1{
         margin-left: 5% !important;
     }
+   
 }

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from . forms import UserRegisterForm
+from .models import NeighbourHood
 
-# Create your views here.
 
 def index(request):
     return render(request,'all-neighbour/home.html')
@@ -20,3 +20,7 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request,"registration/register.html",{'form':form})
+
+def hoods(request):
+    hoods = NeighbourHood.objects.all()
+    return render(request,"all-neighbour/hoods.html",{'hoods':hoods})
