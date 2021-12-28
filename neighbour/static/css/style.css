@@ -32,7 +32,12 @@ body{
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
+.sign1{
+    background-image: url(/static/photos/sign.png);
+    height: fit-content;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
 .intro{
     padding-top: 6%;
     font-size: 60px !important;
@@ -205,11 +210,11 @@ footer{
 .black{
     color: black;
 }
-/* .hood-cont{
-    border: solid 2px;
-    border-color: gainsboro;
-    border-radius: 5px;
-} */
+
+
+
+
+
 
 
 
@@ -228,6 +233,9 @@ footer{
     }
     .right-1{
         margin-left: 5% !important;
+    }
+    .hood-logo{
+        margin-bottom: 5px;
     }
    
 }

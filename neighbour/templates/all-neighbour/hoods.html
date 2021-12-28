@@ -5,11 +5,12 @@
 {% block content%}
 {{block.super}}
 <div class="container mt-3">
+    <a href="{% url 'newhood' %}" class="btn join black font-weight-bol btn-sm"><i class="fas fa-plus"></i> NEW HOOD</a>
     {% for hood in hoods %}
-    <div class="hood-cont p-2 card mt-2" >
+    <div class="hood-cont p-2 card mt-3" >
         <div class="row">
             <div class="col-md-4">
-                <img class="" src="{{hood.hood_logo.url}}" alt=" " height="200">
+                <img class="hood-logo" src="{{hood.hood_logo.url}}" alt=" " height="200" width="320">
             </div>
             <div class="col-md-3">
                 <h4 class="card-title">{{hood.name}}</h4>
@@ -20,7 +21,7 @@
                 <p class="card-text">{{hood.description}}</p>
             </div>
             <div class="col-md-2 pt-3 pl-5">
-                <a href="#" class="btn join text-dark font-weight-bold">JOIN HOOD</a>
+                <a href="#" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a>
             </div>
         </div>
 

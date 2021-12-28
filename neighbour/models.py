@@ -8,7 +8,7 @@ from phone_field import PhoneField
 class NeighbourHood(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    # admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name="hood",null=True)
     hood_logo = models.ImageField(upload_to='images/')
     description = models.TextField()
     health_tell = models.IntegerField(null=True, blank=True)
@@ -30,40 +30,40 @@ class NeighbourHood(models.Model):
         return cls.objects.filter(id=neighborhood_id)
 
     
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
-#     bio = models.TextField(max_length=400, blank=True)
-#     name = models.CharField(blank=True, max_length=120)
-#     profile_pic = models.ImageField(upload_to='images/',default='v1639327874/images/default_drurzc.jpg')
-#     phone_number = PhoneField(max_length=15, blank=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
+    bio = models.TextField(max_length=400, blank=True)
+    name = models.CharField(blank=True, max_length=120)
+    profile_pic = models.ImageField(upload_to='images/',default='v1639327874/images/default_drurzc.jpg')
+    phone_number = PhoneField(max_length=15, blank=True)
     
-#     def __str__(self):
-#         return f'{self.user.username} Profile'
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
-#     @receiver(post_save, sender=User)
-#     def create_user_profile(sender, instance, created, **kwargs):
-#         if created:
-#             Profile.objects.create(user=instance)
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
 
-#     @receiver(post_save, sender=User)
-#     def save_user_profile(sender, instance, **kwargs):
-#         instance.profile.save()
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
         
               
 class Post(models.Model):
     title = models.CharField(max_length=120, null=True)
     post = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
-    # hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
     
     
 class Business(models.Model):
     name = models.CharField(max_length=120)
     email = models.EmailField(max_length=254)
     description = models.TextField(blank=True)
-    # neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='business')
-    # user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='business')
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
 
     def __str__(self):
         return f'{self.name} Business'
