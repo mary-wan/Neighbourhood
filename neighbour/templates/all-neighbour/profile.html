@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %} 
+{{ block.super}}
+
+<div class="container mt-3">
+    <div class="content-section">
+        <div class="media">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" height="150px" width="150px">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="media-body">
+                            <div class=""><span class="font-weight-bold name">{{ user.username|title }}</span>
+                                <a class="btn btn-sm btn-outline-secondary ml-3 mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
+                            </div>
+
+                            <div class="post-details mt-3 mb-3">
+                                <span class="mr-5"><strong>{{posts.count}}</strong> Neighbourhood</span>
+                            </div>
+                            <h6 class="font-weight-bold">Contact info: </h6>
+                            <p> {{user.profile.name}} <br>
+                                {{user.email}} <br>
+                                {% if user.profile.phone_number%}
+                                {{user.profile.phone_number}}
+                                {%endif%}
+                            </p>
+                            <p class="text-secondary">{{ user.profile.bio }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content">
+                    <form action="" method="post" enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
+                        {% csrf_token%}
+                        {{ user_form|crispy}}
+                        {{ profile_form|crispy}}
+                        <button type="submit" class="btn btn-info btn-sm login"> Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

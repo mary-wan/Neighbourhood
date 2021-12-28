@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http  import HttpResponseRedirect,Http404
-from . forms import UserRegisterForm,HoodForm
+from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,HoodForm
 from .models import NeighbourHood
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -41,4 +41,23 @@ def new_hood(request):
     else:
         form = HoodForm()
     return render(request, 'all-neighbour/newhood.html', {'form': form})
+
+
+@login_required(login_url='login')
+def profile(request, username):
+    current_user=request.user
+    
+        
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateUserProfileForm(instance=request.user.profile)
+
+    return render(request, 'all-neighbour/profile.html', {'user_form':user_form,'profile_form':profile_form})
     

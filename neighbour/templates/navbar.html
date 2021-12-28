@@ -28,9 +28,9 @@
         </li> -->
         <li class="nav-item dropdown mr-2">
             <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="{% static 'photos/logo.png' %}"  alt= "" class="rounded-circle user profile-img"></a>
+              <img src="{{user.profile.profile_pic.url}}"  alt= "" class="rounded-circle user profile-img"></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="#" class="nav-link text-dark dropdown-item"><i class="fas fa-user"></i> Profile</a>
+              <a href="{%url 'profile' user.username%}" class="nav-link text-dark dropdown-item"><i class="fas fa-user"></i> Profile</a>
               <!-- <a href="/accounts/password/change" class="nav-link text-dark dropdown-item"><i class="fas fa-cog"></i> Settings</a> -->
               <a href="/logout" class="nav-link text-dark dropdown-item">Logout <i class="fas fa-sign-out-alt"></i></a>
               

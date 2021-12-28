@@ -5,4 +5,5 @@ urlpatterns=[
     path('',views.index,name='home'),
     path('hoods/',views.hoods,name='hoods'),
     path('newhood/', views.new_hood, name='newhood'),
+    path('profile/<username>/', views.profile, name='profile'),
 ]
