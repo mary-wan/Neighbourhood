@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http  import HttpResponseRedirect,Http404
 from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,HoodForm
-from .models import NeighbourHood
+from .models import NeighbourHood,Business,Post
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -64,10 +64,12 @@ def new_hood(request):
 @login_required(login_url='login')
 def user_hood(request,id):
     hood = NeighbourHood.objects.get(id=id)
+    businesses = Business.objects.filter(neighbourhood=hood)
+    posts = Post.objects.filter(neighbourhood=hood)
     request.user.profile.neighbourhood = hood
     request.user.profile.save()
     
-    return render(request, 'all-neighbour/user_hood.html', {'hood': hood})
+    return render(request, 'all-neighbour/user_hood.html', {'hood': hood,'businesses':businesses,'posts':posts})
     
 @login_required(login_url='login')
 def leave_hood(request,id):

@@ -5,16 +5,16 @@
 {% block content %} 
 {{ block.super}}
     <div class="container-fluid">
-        <h2 class="text-center mt-3 orange">My Hood: {{user.profile.neighbourhood.name}}</h2>
+        <h2 class="text-center mt-3 orange">My Hood: {{user.profile.neighbourhood.name|title}}</h2>
         <div class="hood-cont p-2 card mt-3" >
             <div class="row">
                 <div class="col-md-4">
                     <img class="hood-logo" src="{{hood.hood_logo.url}}" alt=" " height="200" width="320">
                 </div>
                 <div class="col-md-2">
-                    <h4 class="card-title">{{hood.name}}</h4>
+                    <h4 class="card-title">{{hood.name|title}}</h4>
                     <p>Locaton: {{hood.location}}</p>
-                    <a href="{% url 'leave_hood' hood.id %}" class="btn btn-danger font-weight-bold btn-sm mt-5 mb-1">LEAVE HOOD</a> 
+                    <a href="{% url 'leave_hood' hood.id %}" class="btn btn-outline-warning font-weight-bold btn-sm mt-5 mb-1">LEAVE HOOD</a> 
                 </div>
                 <div class="col-md-3">
                     <p><span class="font-weight-bold">Hood Administrator:</span>  {{hood.administrator}}</p>
@@ -25,6 +25,73 @@
                     <p class="card-text">{{hood.description}}</p>
                     
                 </div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="hood-cont p-2 card mt-3" >
+            <div class="row">
+                <div class="col-md-5">
+                    <h3 class="text-center mt-3 orange">Businesses</h3>
+                    {% for business in businesses%}
+                    <div class="flex">
+                        <img src="{{business.business_photo.url}}" alt="" height="100" width="150">
+                        <span class="bus-owner">
+                            <h6 class="font-weight-bold">{{business.name}}</h6>
+                            <p><span class="font-weight-bold">Owner: </span>  {{business.owner.user.username|title}}</p>
+                            <!-- <p><span class="font-weight-bold">Email: </span>{{business.email}}</p>
+                            {% if business.phone_number%}
+                            <p><span class="font-weight-bold">Tel: </span>{{business.phone_number}}</p>
+                            {%endif%} -->
+                            <a href="" class="orange1 text-white p-1 detail-view" data-toggle="modal" data-target="#modal-{{business.id}}">View Details</a>
+                    </span>
+                   
+                    </div>
+                    <div class="modal fade" id="modal-{{business.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalCenterTitle">{{business.name}}</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="flex">
+                                    <img src="{{business.business_photo.url}}" alt="" height="100" width="150">
+                                    <span class="bus-owner">
+                                        <h6 class="font-weight-bold">{{business.name}}</h6>
+                                        <p><span class="font-weight-bold">Owner: </span>  {{business.owner.user.username|title}}</p>
+                                        <p><span class="font-weight-bold">Email: </span>{{business.email}}</p>
+                                        {% if business.phone_number%}
+                                        <p><span class="font-weight-bold">Tel: </span>{{business.phone_number}}</p>
+                                        {%endif%}
+                                    </span>
+                                </div>
+                                <p>{{business.description}}</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <hr class="mb-2">
+                    {%endfor%}
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <h3 class="text-center mt-3 orange">Posts</h3>
+                    {% for post in posts%}
+                    <div class="post-hold mb-2">
+                        <h6 class="font-weight-bold">{{post.title}}</h6>
+                        <p>{{post.post}}</p>
+                    <hr>
+                    </div>
+                    {%endfor%}
+                </div>
+                
             </div>
     
         </div>

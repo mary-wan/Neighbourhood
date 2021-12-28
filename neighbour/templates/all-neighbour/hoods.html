@@ -13,7 +13,7 @@
                 <img class="hood-logo" src="{{hood.hood_logo.url}}" alt=" " height="200" width="320">
             </div>
             <div class="col-md-3">
-                <h4 class="card-title">{{hood.name}}</h4>
+                <h4 class="card-title">{{hood.name|title}}</h4>
                 <p>{{hood.location}}</p>
             </div>
             <div class="col-md-3">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-2 pt-3 pl-5">
                 {% if request.user.profile.neighbourhood == hood %}
-                <a href="{% url 'leave_hood' hood.id %}" class="btn btn-danger font-weight-bold btn-sm">LEAVE HOOD</a> 
+                <a href="{% url 'leave_hood' hood.id %}" class="btn btn-outline-warning font-weight-bold btn-sm">LEAVE HOOD</a> 
                 {% elif not request.user.profile.neighbourhood %}
                 <a href="{% url 'my_hood' hood.id %}" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a> 
                 {% endif %}

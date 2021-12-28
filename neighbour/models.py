@@ -11,8 +11,8 @@ class NeighbourHood(models.Model):
     admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name="hood",null=True)
     hood_logo = models.ImageField(upload_to='images/')
     description = models.TextField()
-    health_tell = models.IntegerField(null=True, blank=True)
-    police_number = models.IntegerField(null=True, blank=True)
+    health_tell = PhoneField(null=True, blank=True)
+    police_number = PhoneField(null=True, blank=True)
     administrator = models.CharField(max_length=100,null=True)
     
     class Meta:
@@ -57,8 +57,8 @@ class Post(models.Model):
     title = models.CharField(max_length=120, null=True)
     post = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
-    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
     
     
 class Business(models.Model):
@@ -66,7 +66,9 @@ class Business(models.Model):
     email = models.EmailField(max_length=254)
     description = models.TextField(blank=True)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='business')
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
+    business_photo = models.ImageField(upload_to='images/',null=True)
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
+    phone_number = PhoneField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} Business'

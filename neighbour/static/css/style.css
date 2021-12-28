@@ -214,14 +214,35 @@ footer{
     background-color: orange;
     font-family: 'BLKCHCRY', sans-serif;
 }
-
-
-
-
-
+.btn-outline-warning {
+    border: solid 1px;
+    border-color: orange;
+    color: orange;
+}
+.bus-owner p, .post-hold p,.bus-owner h6,.post-hold h6{
+    margin: 0% !important;
+}
+a:hover{
+    text-decoration: none;
+}
+.orange1{
+    background-color: rgb(4, 63, 63)!important; ;
+}
+.details{
+    display: none;
+}
 
 
 @media only screen and (min-width: 768px) {
+    .flex{
+        display: flex;
+    }
+    .bus-owner{
+        margin-left: 15px;
+    }
+    .post-hold{
+        padding-left: 10px;
+    }
 
 }
 @media only screen and (max-width: 768px) {
