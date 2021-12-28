@@ -210,7 +210,10 @@ footer{
 .black{
     color: black;
 }
-
+.orange{
+    background-color: orange;
+    font-family: 'BLKCHCRY', sans-serif;
+}
 
 
 

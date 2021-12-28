@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %} 
+{{ block.super}}
+    <div class="container-fluid">
+        <h2 class="text-center mt-3 orange">My Hood: {{user.profile.neighbourhood.name}}</h2>
+        <div class="hood-cont p-2 card mt-3" >
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="hood-logo" src="{{hood.hood_logo.url}}" alt=" " height="200" width="320">
+                </div>
+                <div class="col-md-2">
+                    <h4 class="card-title">{{hood.name}}</h4>
+                    <p>Locaton: {{hood.location}}</p>
+                    <a href="{% url 'leave_hood' hood.id %}" class="btn btn-danger font-weight-bold btn-sm mt-5 mb-1">LEAVE HOOD</a> 
+                </div>
+                <div class="col-md-3">
+                    <p><span class="font-weight-bold">Hood Administrator:</span>  {{hood.administrator}}</p>
+                    <p><span class="font-weight-bold">Health Department:</span>  {{hood.health_tell}}</p>
+                    <p><span class="font-weight-bold">Police Authorities:</span>  {{hood.police_number}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p class="card-text">{{hood.description}}</p>
+                    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+{%endblock%}

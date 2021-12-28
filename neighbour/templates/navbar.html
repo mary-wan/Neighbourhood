@@ -13,6 +13,11 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'hoods' %}">Neighbourhoods </a>
         </li>
+        {% if user.profile.neighbourhood %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'my_hood' user.profile.neighbourhood.id %}">{{user.profile.neighbourhood.name}} </a>
+        </li>
+        {%endif%}
         {%endif%}
       </ul>
       <ul class="nav navbar-nav navbar-right ml-auto mr-5"> 

@@ -15,26 +15,20 @@
             <div class="col-md-3">
                 <h4 class="card-title">{{hood.name}}</h4>
                 <p>{{hood.location}}</p>
-                <p></p>
-                
             </div>
             <div class="col-md-3">
                 <p class="card-text">{{hood.description}}</p>
             </div>
             <div class="col-md-2 pt-3 pl-5">
-                <a href="#" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a>
+                {% if request.user.profile.neighbourhood == hood %}
+                <a href="{% url 'leave_hood' hood.id %}" class="btn btn-danger font-weight-bold btn-sm">LEAVE HOOD</a> 
+                {% elif not request.user.profile.neighbourhood %}
+                <a href="{% url 'my_hood' hood.id %}" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a> 
+                {% endif %}
             </div>
         </div>
 
     </div>
-        <!-- <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{hood.hood_logo.url}}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{hood.name}}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn join text-dark font-weight-bold">JOIN HOOD</a>
-            </div>
-          </div> -->
     {% endfor %}
 </div>
 {%endblock%}

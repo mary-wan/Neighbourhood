@@ -30,20 +30,6 @@ def hoods(request):
     return render(request,"all-neighbour/hoods.html",{'hoods':hoods})
 
 @login_required(login_url='login')
-def new_hood(request):
-    if request.method == 'POST':
-        form = HoodForm(request.POST, request.FILES)
-        if form.is_valid():
-            hood = form.save(commit=False)
-            # hood.admin = request.user.profile
-            hood.save()
-            return HttpResponseRedirect(reverse("hoods"))
-    else:
-        form = HoodForm()
-    return render(request, 'all-neighbour/newhood.html', {'form': form})
-
-
-@login_required(login_url='login')
 def profile(request, username):
     current_user=request.user
     
@@ -60,4 +46,36 @@ def profile(request, username):
         profile_form = UpdateUserProfileForm(instance=request.user.profile)
 
     return render(request, 'all-neighbour/profile.html', {'user_form':user_form,'profile_form':profile_form})
+
+
+@login_required(login_url='login')
+def new_hood(request):
+    if request.method == 'POST':
+        form = HoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            hood = form.save(commit=False)
+            hood.admin = request.user
+            hood.save()
+            return HttpResponseRedirect(reverse("hoods"))
+    else:
+        form = HoodForm()
+    return render(request, 'all-neighbour/newhood.html', {'form': form})
+
+@login_required(login_url='login')
+def user_hood(request,id):
+    hood = NeighbourHood.objects.get(id=id)
+    request.user.profile.neighbourhood = hood
+    request.user.profile.save()
+    
+    return render(request, 'all-neighbour/user_hood.html', {'hood': hood})
+    
+@login_required(login_url='login')
+def leave_hood(request,id):
+    hood = NeighbourHood.objects.get(id=id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('hoods')
+
+
+
     

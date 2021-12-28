@@ -14,7 +14,9 @@ class NeighbourHood(models.Model):
     health_tell = models.IntegerField(null=True, blank=True)
     police_number = models.IntegerField(null=True, blank=True)
     administrator = models.CharField(max_length=100,null=True)
-  
+    
+    class Meta:
+        ordering = ['-pk']
 
     def __str__(self):
         return f'{self.name} hood'
@@ -36,6 +38,7 @@ class Profile(models.Model):
     name = models.CharField(blank=True, max_length=120)
     profile_pic = models.ImageField(upload_to='images/',default='v1639327874/images/default_drurzc.jpg')
     phone_number = PhoneField(max_length=15, blank=True)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.SET_NULL, null=True, related_name='members', blank=True)
     
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -77,3 +80,5 @@ class Business(models.Model):
     @classmethod
     def search_business(cls, name):
         return cls.objects.filter(name__icontains=name).all()
+    
+    
