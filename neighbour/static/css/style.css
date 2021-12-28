@@ -228,9 +228,10 @@ a:hover{
 .orange1{
     background-color: rgb(4, 63, 63)!important; ;
 }
-.details{
-    display: none;
-}
+
+
+
+
 
 
 @media only screen and (min-width: 768px) {
@@ -240,8 +241,8 @@ a:hover{
     .bus-owner{
         margin-left: 15px;
     }
-    .post-hold{
-        padding-left: 10px;
+    .post-hold,.post-btn{
+        margin-left: 10px;
     }
 
 }

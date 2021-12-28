@@ -60,18 +60,27 @@ class Post(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
     
+    class Meta:
+        ordering = ['-pk']
+        
+    def __str__(self):
+        return f'{self.title} Post'
+    
     
 class Business(models.Model):
-    name = models.CharField(max_length=120)
+    business_name = models.CharField(max_length=120)
     email = models.EmailField(max_length=254)
     description = models.TextField(blank=True)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='business')
-    business_photo = models.ImageField(upload_to='images/',null=True)
+    business_photo = models.ImageField(upload_to='images/',default='v1639327874/images/default_drurzc.jpg')
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
     phone_number = PhoneField(null=True, blank=True)
+    
+    class Meta:
+        ordering = ['-pk']
 
     def __str__(self):
-        return f'{self.name} Business'
+        return f'{self.business_name} Business'
 
     def create_business(self):
         self.save()

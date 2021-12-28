@@ -8,4 +8,5 @@ urlpatterns=[
     path('profile/<username>/', views.profile, name='profile'),
     path('my_hood/<id>', views.user_hood, name='my_hood'),
     path('leave-hood/<id>', views.leave_hood, name='leave_hood'),
+    path('newbusiness/<id>/', views.new_business, name='newbusiness'),
 ]

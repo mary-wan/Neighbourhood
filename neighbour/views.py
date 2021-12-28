@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http  import HttpResponseRedirect,Http404
-from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,HoodForm
+from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,HoodForm,BusinessForm,PostForm
 from .models import NeighbourHood,Business,Post
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -78,6 +78,20 @@ def leave_hood(request,id):
     request.user.profile.save()
     return redirect('hoods')
 
+@login_required(login_url='login')
+def new_business(request,id):
+    hood = NeighbourHood.objects.get(id=id)
+    if request.method=='POST':
+        bus_form = BusinessForm(request.POST,request.FILES)
+        if bus_form.is_valid():
+            business = bus_form.save(commit=False)
+            business.neighbourhood = hood
+            business.owner = request.user.profile
+            business.save()
+            return HttpResponseRedirect(reverse("hoods"))
+    else:
+        bus_form = BusinessForm()
+    return render(request,'all-neighbour/business.html',{'bus_form':bus_form})
 
 
     
