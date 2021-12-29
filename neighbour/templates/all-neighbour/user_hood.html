@@ -84,11 +84,12 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <h3 class="text-center mt-3 orange">Posts</h3>
-                    <a href="" class="btn join black font-weight-bol btn-sm mb-2 post-btn"><i class="fas fa-plus"></i> Post</a>
+                    <a href="{% url 'newpost' hood.id%}" class="btn join black font-weight-bol btn-sm mb-2 post-btn"><i class="fas fa-plus"></i> Post</a>
                     {% for post in posts%}
                     <div class="post-hold mb-2">
                         <h6 class="font-weight-bold">{{post.title}}</h6>
                         <p>{{post.post}}</p>
+                       <p class="text-center "><small class="text-muted">--By {{post.owner|title}} on {{post.date}}--</small></p> 
                     <hr>
                     </div>
                     {%endfor%}

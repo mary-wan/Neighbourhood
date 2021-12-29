@@ -88,10 +88,25 @@ def new_business(request,id):
             business.neighbourhood = hood
             business.owner = request.user.profile
             business.save()
-            return HttpResponseRedirect(reverse("hoods"))
+            return redirect('my_hood', id)
     else:
         bus_form = BusinessForm()
     return render(request,'all-neighbour/business.html',{'bus_form':bus_form})
+
+@login_required(login_url='login')
+def new_post(request,id):
+    hood = NeighbourHood.objects.get(id=id)
+    if request.method=='POST':
+        post_form = PostForm(request.POST)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.neighbourhood = hood
+            post.owner = request.user
+            post.save()
+            return redirect('my_hood', id)
+    else:
+        post_form = PostForm()
+    return render(request,'all-neighbour/post.html',{'post_form':post_form})
 
 
     
