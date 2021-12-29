@@ -8,6 +8,16 @@
     font-family: "Ginga";
     src: url("fonts/Ginga.ttf");
 }
+@font-face {
+    font-family: 'Endurance';
+    src: url('fonts/Endurance.woff2') format('woff2'),
+         url('fonts/Endurance.woff') format('woff');
+}
+@font-face {
+    font-family: 'ItalicQuire';
+    src: url('fonts/dedd2214cc3d65f28d0bae614f97a47c.woff2') format('woff2'),
+         url('fonts/dedd2214cc3d65f28d0bae614f97a47c.woff') format('woff');
+}
 body{
     font-family: 'lato', sans-serif;
     overflow-x:hidden !important;
@@ -228,10 +238,17 @@ a:hover{
 .orange1{
     background-color: rgb(4, 63, 63)!important; ;
 }
-
-
-
-
+.hoodapp{
+    font-family: 'ItalicQuire', sans-serif;
+}
+.community{
+    font-family: 'Endurance', sans-serif;
+    font-size: 20px !important;
+}
+.italic{
+    font-family: 'Endurance', sans-serif;
+    font-size: 18px !important;
+}
 
 
 @media only screen and (min-width: 768px) {
@@ -243,6 +260,9 @@ a:hover{
     }
     .post-hold,.post-btn{
         margin-left: 10px;
+    }
+    .trusted{
+        padding-left: 5%;
     }
 
 }
@@ -261,6 +281,9 @@ a:hover{
     }
     .hood-logo{
         margin-bottom: 5px;
+    }
+    .values{
+        padding-left: 2%;
     }
    
 }
