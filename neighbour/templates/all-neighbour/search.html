@@ -13,7 +13,7 @@
       </div>
     {% endfor %}
     {% endif %}
-    <h1 class="text-center orange">Found {{hoods.count}} Neighbourboods</h1>
+    <h1 class="text-center orange">Found {{hoods.count}} Neighbourbood{{hoods.count|pluralize}}</h1>
     {% for hood in hoods %}
     <div class="hood-cont p-2 card mt-3" >
         <div class="row">

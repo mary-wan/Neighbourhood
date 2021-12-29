@@ -37,7 +37,7 @@ $ pip install -r requirements.txt
 ### Running the Application
 To view the website run the command
 ```
-$ python3.6 manage.py unserver
+$ python3.6 manage.py runserver
 
 
 ```

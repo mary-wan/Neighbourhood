@@ -249,6 +249,11 @@ a:hover{
     font-family: 'Endurance', sans-serif;
     font-size: 18px !important;
 }
+.send-message{
+    margin-left: 35%;
+}
+
+
 
 
 @media only screen and (min-width: 768px) {
