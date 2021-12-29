@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% block content%}
+{{block.super}}
+<div class="container mt-3">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
+    <h1 class="text-center orange">Found {{hoods.count}} Neighbourboods</h1>
+    {% for hood in hoods %}
+    <div class="hood-cont p-2 card mt-3" >
+        <div class="row">
+            <div class="col-md-4">
+                <img class="hood-logo" src="{{hood.hood_logo.url}}" alt=" " height="200" width="320">
+            </div>
+            <div class="col-md-3">
+                <h4 class="card-title">{{hood.name|title}}</h4>
+                <p>{{hood.location}}</p>
+            </div>
+            <div class="col-md-3">
+                <p class="card-text">{{hood.description}}</p>
+            </div>
+            <div class="col-md-2 pt-3 pl-5">
+                {% if request.user.profile.neighbourhood == hood %}
+                <a href="{% url 'my_hood' hood.id %}" class="btn btn-outline-warning font-weight-bold btn-sm mb-2">VIEW HOOD</a> 
+                <a href="{% url 'leave_hood' hood.id %}" class="btn btn-outline-warning font-weight-bold btn-sm">LEAVE HOOD</a> 
+                {% elif not request.user.profile.neighbourhood %}
+                <a href="{% url 'my_hood' hood.id %}" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a> 
+                {% endif %}
+                {%if hood.admin == current_user%}
+                      <p class="ml-4 mt-5">
+                          <a href="{% url 'update_hood' hood.id %}"><i class="fas fa-edit"></i></a>
+                          <!-- <a href="" class="ml-4"><i class="fas fa-trash-alt text-danger"></i></a> -->
+                        </p>
+                {%endif%}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}

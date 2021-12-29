@@ -23,14 +23,12 @@
       <ul class="nav navbar-nav navbar-right ml-auto mr-5"> 
 
         {% if user.is_authenticated %}
-        <form class="form-inline mr-3" action=" #" enctype="multipart/form-data" role="search" aria-label="Search">
+        <form class="form-inline mr-3" action="{% url 'search' %}" enctype="multipart/form-data" role="search" aria-label="Search">
           {% csrf_token %}
              <input autocomplete="off" id="searching" class="form-control input-sm search" 
-              placeholder="&#xF002; search hood"  style="font-family:Arial, FontAwesome" name="title">
+              placeholder="&#xF002; search hood"  style="font-family:Arial, FontAwesome" name="name">
         </form>
-        <!-- <li class="nav-item active">
-          <a href="" class=" nav-link site mr-2"> {{user.username|title}}</a>
-        </li> -->
+
         <li class="nav-item dropdown mr-2">
             <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{user.profile.profile_pic.url}}"  alt= "" class="rounded-circle user profile-img"></a>

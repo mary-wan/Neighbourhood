@@ -15,4 +15,5 @@ urlpatterns=[
     path('update_post/<id>/<post_id>/', views.update_post, name='update_post'),
     path('delete_post/<id>/<post_id>/', views.delete_post, name='delete_post'),
     path('update_hood/<id>/', views.update_hood, name='update_hood'),
+    path('search/', views.search_hood, name='search')
 ]
