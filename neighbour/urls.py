@@ -14,4 +14,5 @@ urlpatterns=[
     path('delete_business/<id>/<bus_id>/', views.delete_business, name='delete_business'),
     path('update_post/<id>/<post_id>/', views.update_post, name='update_post'),
     path('delete_post/<id>/<post_id>/', views.delete_post, name='delete_post'),
+    path('update_hood/<id>/', views.update_hood, name='update_hood'),
 ]

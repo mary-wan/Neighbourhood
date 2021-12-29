@@ -13,7 +13,7 @@ class NeighbourHood(models.Model):
     description = models.TextField()
     health_tell = PhoneField(null=True, blank=True)
     police_number = PhoneField(null=True, blank=True)
-    administrator = models.CharField(max_length=100,null=True)
+    area_administrator = models.CharField(max_length=100,null=True)
     
     class Meta:
         ordering = ['-pk']

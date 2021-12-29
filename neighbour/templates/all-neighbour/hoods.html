@@ -5,6 +5,14 @@
 {% block content%}
 {{block.super}}
 <div class="container mt-3">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
     <a href="{% url 'newhood' %}" class="btn join black font-weight-bol btn-sm"><i class="fas fa-plus"></i> NEW HOOD</a>
     {% for hood in hoods %}
     <div class="hood-cont p-2 card mt-3" >
@@ -26,6 +34,12 @@
                 {% elif not request.user.profile.neighbourhood %}
                 <a href="{% url 'my_hood' hood.id %}" class="btn join black font-weight-bold btn-sm">JOIN HOOD</a> 
                 {% endif %}
+                {%if hood.admin == current_user%}
+                      <p class="ml-4 mt-5">
+                          <a href="{% url 'update_hood' hood.id %}"><i class="fas fa-edit"></i></a>
+                          <!-- <a href="" class="ml-4"><i class="fas fa-trash-alt text-danger"></i></a> -->
+                        </p>
+                {%endif%}
             </div>
         </div>
 
