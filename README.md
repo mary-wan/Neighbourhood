@@ -26,7 +26,7 @@
 
 ### Installation process
 * Open terminal
-* run `https://github.com/mary-wan/Neighbourhood.git`
+* run ` git clone https://github.com/mary-wan/Neighbourhood.git`
 
 ### Dependancy Installation process
 ```

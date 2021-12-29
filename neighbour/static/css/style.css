@@ -57,18 +57,18 @@ body{
 .nei{
     font-family: 'Ginga', sans-serif;
     font-size: 120px;
-    color: orange;
+    color: rgb(248, 189, 79);;
     padding-top: 0 !important;
     margin-top: 0% !important;
    
 }
 .neig{
     font-family: 'BLKCHCRY', sans-serif;
-    color: orange !important;
+    color: rgb(248, 189, 79) !important;
     font-size: 25px !important;  
 }
 .join{
-    background-color: orange;
+    background-color: rgb(248, 189, 79,0.8);;
    
 }
 footer{
@@ -92,11 +92,11 @@ footer{
    
 }
 .link-color:hover {
-    color: orange !important;
+    color: rgb(248, 189, 79,0.8) !important;
     text-decoration: none;
 }
 .btn-color:hover{
-    background-color: orange !important;
+    background-color: rgb(248, 189, 79,0.8) !important;
 }
 .login{
     width: 100%;
@@ -221,7 +221,7 @@ footer{
     color: black;
 }
 .orange{
-    background-color: orange;
+    background-color: rgb(248, 189, 79,0.8);
     font-family: 'BLKCHCRY', sans-serif;
 }
 .btn-outline-warning {
@@ -263,7 +263,7 @@ a:hover{
     .bus-owner{
         margin-left: 15px;
     }
-    .post-hold,.post-btn{
+    .post-hold{
         margin-left: 10px;
     }
     .trusted{
