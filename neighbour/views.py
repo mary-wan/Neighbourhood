@@ -34,8 +34,7 @@ def hoods(request):
 @login_required(login_url='login')
 def profile(request, username):
     current_user=request.user
-    
-        
+           
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -48,7 +47,6 @@ def profile(request, username):
         profile_form = UpdateUserProfileForm(instance=request.user.profile)
 
     return render(request, 'all-neighbour/profile.html', {'user_form':user_form,'profile_form':profile_form})
-
 
 @login_required(login_url='login')
 def new_hood(request):
@@ -115,7 +113,6 @@ def new_post(request,id):
 
 @login_required(login_url='login')
 def update_business(request,id,bus_id):
-    hood = NeighbourHood.objects.get(id=id)
     instance= Business.objects.get(id=bus_id)
     title = 'UPDATE BUSINESS'
     if request.method=='POST':
@@ -128,6 +125,18 @@ def update_business(request,id,bus_id):
         bus_form = BusinessForm(instance=instance)
     return render(request,'all-neighbour/business.html',{'bus_form':bus_form,'title':title})
 
+@login_required(login_url='login')
+def update_post(request,id,post_id):
+    title = 'UPDATE POST'
+    instance= Post.objects.get(id=post_id)
+    if request.method=='POST':
+        post_form = PostForm(request.POST,instance=instance)
+        if post_form.is_valid():
+           post_form.save()
+        return redirect('my_hood', id)
+    else:
+        post_form = PostForm(instance=instance)
+    return render(request,'all-neighbour/post.html',{'post_form':post_form,'title':title})
 
 @login_required(login_url='login')
 def delete_business(request,id,bus_id):
@@ -136,5 +145,11 @@ def delete_business(request,id,bus_id):
     messages.info(request, ('Business Deleted'))
     return redirect('my_hood', id)
 
+@login_required(login_url='login')
+def delete_post(request,id,post_id):
+    post= Post.objects.get(id=post_id)
+    post.delete_post()
+    messages.info(request, ('Post Deleted'))
+    return redirect('my_hood', id)
 
     

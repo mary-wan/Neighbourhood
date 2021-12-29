@@ -66,6 +66,9 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.title} Post'
     
+    def delete_post(self):
+        self.delete()
+    
     
 class Business(models.Model):
     business_name = models.CharField(max_length=120)
