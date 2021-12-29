@@ -50,7 +50,7 @@ $ python3.6 manage.py test neighbour
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
 |  Form validation    | User submits empty or invalid data on form | An error is message is displayed    |
-|  Valid form  | User enters input for fields and submits    | Neighbourhood are displayed|
+|  Valid form  | User enters input for fields and submits    | Neighbourhoods are displayed|
 
 ****
 
