@@ -11,12 +11,12 @@
         <div class="col-md-6 mt-4 ">
             <div class="card pb-5 pt-2">
                 <div class="card-body pb-1 mr-3 ml-3">
-                  <h5 class="text-muted text-center">ADD POST</h5>
+                  <h5 class="text-muted text-center">{{title}}</h5>
                     <hr>
                     <form action="" method="post" class="mb-2" enctype="multipart/form-data">
                         {% csrf_token%}
                         {{ post_form|crispy}}
-                        <button type="submit" class="btn btn-color login text-white"> ADD POST</button>
+                        <button type="submit" class="btn btn-color login text-white"> {{title}}</button>
                     </form>
                  
                                      

@@ -33,19 +33,27 @@
         <div class="hood-cont p-2 card mt-3" >
             <div class="row">
                 <div class="col-md-5">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{message}}
+                      </div>
+                    {% endfor %}
+                    {% endif %}
                     <h3 class="text-center mt-3 orange">Businesses</h3>
                     <a href="{% url 'newbusiness' hood.id%}" class="btn join black font-weight-bol btn-sm mb-2"><i class="fas fa-plus"></i> Business</a>
                     {% for business in businesses%}
                     <div class="flex">
-                        <img src="{{business.business_photo.url}}" alt="" height="100" width="150">
+                        <img src="{{business.business_photo.url}}" alt="" height="130" width="150">
                         <span class="bus-owner">
                             <h6 class="font-weight-bold">{{business.business_name}}</h6>
                             <p><span class="font-weight-bold">Owner: </span>  {{business.owner.user.username|title}}</p>
-                            <!-- <p><span class="font-weight-bold">Email: </span>{{business.email}}</p>
-                            {% if business.phone_number%}
-                            <p><span class="font-weight-bold">Tel: </span>{{business.phone_number}}</p>
-                            {%endif%} -->
-                            <a href="" class="orange1 text-white p-1 detail-view" data-toggle="modal" data-target="#modal-{{business.id}}">View Details</a>
+                            <a href="" class="orange1 text-white p-1 detail-view" data-toggle="modal" data-target="#modal-{{business.id}}">View Details</a> <br><br>
+                            {%if business.owner.user == current_user%}
+                            <a href="{% url 'update_business' hood.id business.id%}" ><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'delete_business' hood.id business.id%}" class="ml-4"><i class="fas fa-trash-alt text-danger"></i></a>
+                            {%endif%}
                     </span>
                    
                     </div>
@@ -60,7 +68,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="flex">
-                                    <img src="{{business.business_photo.url}}" alt="" height="100" width="150">
+                                    <img src="{{business.business_photo.url}}" alt="" height="130" width="150">
                                     <span class="bus-owner">
                                         <h6 class="font-weight-bold">{{business.business_name}}</h6>
                                         <p><span class="font-weight-bold">Owner: </span>  {{business.owner.user.username|title}}</p>
@@ -90,6 +98,12 @@
                         <h6 class="font-weight-bold">{{post.title}}</h6>
                         <p>{{post.post}}</p>
                        <p class="text-center "><small class="text-muted">--By {{post.owner|title}} on {{post.date}}--</small></p> 
+                       {%if post.owner == current_user%}
+                      <p class="text-center">
+                          <a href=""><i class="fas fa-edit"></i></a>
+                          <a href="" class="ml-4"><i class="fas fa-trash-alt text-danger"></i></a>
+                        </p>
+                       {%endif%}
                     <hr>
                     </div>
                     {%endfor%}

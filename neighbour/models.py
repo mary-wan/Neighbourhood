@@ -72,7 +72,7 @@ class Business(models.Model):
     email = models.EmailField(max_length=254)
     description = models.TextField(blank=True)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='business')
-    business_photo = models.ImageField(upload_to='images/',default='v1639327874/images/default_drurzc.jpg')
+    business_photo = models.ImageField(upload_to='images/')
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
     phone_number = PhoneField(null=True, blank=True)
     

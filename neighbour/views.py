@@ -4,6 +4,8 @@ from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,Hood
 from .models import NeighbourHood,Business,Post
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.forms.models import model_to_dict
+from django.contrib import messages
 
 
 def index(request):
@@ -63,13 +65,14 @@ def new_hood(request):
 
 @login_required(login_url='login')
 def user_hood(request,id):
+    current_user = request.user
     hood = NeighbourHood.objects.get(id=id)
     businesses = Business.objects.filter(neighbourhood=hood)
     posts = Post.objects.filter(neighbourhood=hood)
     request.user.profile.neighbourhood = hood
     request.user.profile.save()
     
-    return render(request, 'all-neighbour/user_hood.html', {'hood': hood,'businesses':businesses,'posts':posts})
+    return render(request, 'all-neighbour/user_hood.html', {'hood': hood,'businesses':businesses,'posts':posts,'current_user':current_user})
     
 @login_required(login_url='login')
 def leave_hood(request,id):
@@ -81,6 +84,7 @@ def leave_hood(request,id):
 @login_required(login_url='login')
 def new_business(request,id):
     hood = NeighbourHood.objects.get(id=id)
+    title = 'ADD BUSINESS'
     if request.method=='POST':
         bus_form = BusinessForm(request.POST,request.FILES)
         if bus_form.is_valid():
@@ -91,11 +95,12 @@ def new_business(request,id):
             return redirect('my_hood', id)
     else:
         bus_form = BusinessForm()
-    return render(request,'all-neighbour/business.html',{'bus_form':bus_form})
+    return render(request,'all-neighbour/business.html',{'bus_form':bus_form,'title':title})
 
 @login_required(login_url='login')
 def new_post(request,id):
     hood = NeighbourHood.objects.get(id=id)
+    title = 'ADD POST'
     if request.method=='POST':
         post_form = PostForm(request.POST)
         if post_form.is_valid():
@@ -106,7 +111,30 @@ def new_post(request,id):
             return redirect('my_hood', id)
     else:
         post_form = PostForm()
-    return render(request,'all-neighbour/post.html',{'post_form':post_form})
+    return render(request,'all-neighbour/post.html',{'post_form':post_form,'title':title})
+
+@login_required(login_url='login')
+def update_business(request,id,bus_id):
+    hood = NeighbourHood.objects.get(id=id)
+    instance= Business.objects.get(id=bus_id)
+    title = 'UPDATE BUSINESS'
+    if request.method=='POST':
+        bus_form = BusinessForm(request.POST,request.FILES,instance=instance)
+        if bus_form.is_valid():
+            bus_form.save()
+        return redirect('my_hood', id)
+    else:
+        # bus_form = BusinessForm(initial=model_to_dict(instance))
+        bus_form = BusinessForm(instance=instance)
+    return render(request,'all-neighbour/business.html',{'bus_form':bus_form,'title':title})
+
+
+@login_required(login_url='login')
+def delete_business(request,id,bus_id):
+    business= Business.objects.get(id=bus_id)
+    business.delete_business()
+    messages.info(request, ('Business Deleted'))
+    return redirect('my_hood', id)
 
 
     
