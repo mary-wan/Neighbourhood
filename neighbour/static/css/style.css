@@ -92,11 +92,11 @@ footer{
    
 }
 .link-color:hover {
-    color: rgb(248, 189, 79,0.8) !important;
+    color: orange !important;
     text-decoration: none;
 }
 .btn-color:hover{
-    background-color: rgb(248, 189, 79,0.8) !important;
+    background-color: orange !important;
 }
 .login{
     width: 100%;

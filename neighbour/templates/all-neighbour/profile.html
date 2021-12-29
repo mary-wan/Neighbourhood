@@ -11,7 +11,7 @@
             <div class="container card">
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 mt-3 mb-2">
                         <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" height="150px" width="150px">
                     </div>
                     <div class="col-md-6 mt-3">
@@ -48,7 +48,7 @@
                         {% csrf_token%}
                         {{ user_form|crispy}}
                         {{ profile_form|crispy}}
-                        <button type="submit" class="btn btn-info btn-sm login"> Update Profile</button>
+                        <button type="submit" class="btn btn-color login text-white"> Update Profile</button>
                     </form>
                 </div>
             </div>
