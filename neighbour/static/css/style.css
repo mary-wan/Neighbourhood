@@ -229,7 +229,7 @@ footer{
     border-color: orange;
     color: orange;
 }
-.bus-owner p, .post-hold p,.bus-owner h6,.post-hold h6{
+.bus-owner p, .post-hold p,.bus-owner h6,.post-hold h6,.contact-info p{
     margin: 0% !important;
 }
 a:hover{
@@ -248,9 +248,6 @@ a:hover{
 .italic{
     font-family: 'Endurance', sans-serif;
     font-size: 18px !important;
-}
-.send-message{
-    margin-left: 35%;
 }
 
 
@@ -290,5 +287,12 @@ a:hover{
     .values{
         padding-left: 2%;
     }
-   
+    .send-message{
+        margin-left: 20%;
+    }
+    .mail{
+        padding-top:15px;
+    }
+
+    
 }

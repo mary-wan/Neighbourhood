@@ -8,37 +8,39 @@
 <div class="container mt-3">
     <div class="content-section">
         <div class="media">
-            <div class="container">
+            <div class="container card">
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" height="150px" width="150px">
                     </div>
                     <div class="col-md-6 mt-3">
-                        <div class="media-body">
+                        <div class="contact-info">
                             <div class=""><span class="font-weight-bold name">{{ user.username|title }}</span>
-                                <a class="btn btn-sm btn-outline-secondary ml-3 mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
+                                <a class="btn btn-sm btn-outline-warning ml-3 mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
                             </div>
 
                             <div class="post-details mt-3 mb-3">
                                 {% if user.profile.neighbourhood%}
-                                <span class="mr-5"> Neighbourhood: {{user.profile.neighbourhood.name}}</span>
+                                <p><span class="font-weight-bold ">Neighbourhood:</span>  {{user.profile.neighbourhood.name|title}}</p>
                                 {%endif%}
                             </div>
                             <h6 class="font-weight-bold">Contact info: </h6>
-                            <p> {{user.profile.name}} <br>
-                                {{user.email}} <br>
-                                {% if user.profile.phone_number%}
-                                {{user.profile.phone_number}}
-                                {%endif%}
-                            </p>
+                            <p><span class="font-weight-bold">Name: </span>  {{user.profile.name}}</p>
+                            <p><span class="font-weight-bold">Email: </span>   {{user.email}}</p>
+                            {% if user.profile.phone_number%}
+                                <p><span class="font-weight-bold">Tel: </span>  {{user.profile.phone_number}}</p>
+                                
+                            {%endif%}
                             <p class="text-secondary">{{ user.profile.bio }}</p>
                         </div>
                     </div>
                 </div>
-                <hr>
+                
             </div>
+            
         </div>
+        <hr>
         <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md ">
                 <div class="modal-content">

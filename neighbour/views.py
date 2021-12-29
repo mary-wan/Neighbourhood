@@ -1,4 +1,5 @@
-from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http  import HttpResponseRedirect,Http404
 from . forms import UpdateUserForm, UpdateUserProfileForm, UserRegisterForm,HoodForm,BusinessForm,PostForm
 from .models import NeighbourHood,Business,Post,Profile
@@ -178,4 +179,14 @@ def search_hood(request):
         hoods = NeighbourHood.objects.filter(name__icontains=name).all()
 
     return render(request, 'all-neighbour/search.html', {'hoods': hoods,'current_user':current_user})
+
+def user_profile(request, username):
+    current_user=request.user       
+    user_poster = get_object_or_404(User, username=username)
+    
+    if request.user == user_poster:
+        return redirect('profile', username=request.user.username)
+      
+    return render(request, 'all-neighbour/member.html', {'user_poster': user_poster,
+                                                     'current_user':current_user})
     

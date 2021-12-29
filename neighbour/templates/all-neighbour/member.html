@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %} 
+{{ block.super}}
+
+<div class="container mt-3">
+    <div class="content-section">
+        <div class="media">
+            <div class="container card">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <img class="rounded-circle" src="{{ user_poster.profile.profile_pic.url }}" height="150px" width="150px">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="contact-info">
+                            <div class="">
+                                <span class="font-weight-bold">Username: </span>  {{user_poster.username|title}}
+                                
+                            </div>
+                        </div>
+
+                        <div class="post-details mt-3 mb-3">
+                            {% if user_poster.profile.neighbourhood%}
+                            <p><span class="font-weight-bold ">Neighbourhood:</span>  {{user_poster.profile.neighbourhood.name|title}}</p>
+                            {%endif%}
+                        </div>
+                        <h6 class="font-weight-bold">Contact info: </h6>
+                        {% if user_poster.profile.name%}
+                        <p><span class="font-weight-bold">Name: </span>  {{user_poster.profile.name}}</p>
+                        {%endif%}
+                        <p><span class="font-weight-bold">Email: </span>   {{user_poster.email}}</p>
+                        {% if user_poster.profile.phone_number%}
+                            <p><span class="font-weight-bold">Tel: </span>  {{user_poster.profile.phone_number}}</p>
+                            
+                        {%endif%}
+                        <p class="text-secondary">{{ user_poster.profile.bio }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-4">
+</div>
+
+{%endblock%}

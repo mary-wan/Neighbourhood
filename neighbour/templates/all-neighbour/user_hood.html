@@ -126,17 +126,25 @@
         {% if member.user.username == current_user.username%}
         {%else%}
         <div class="mt-2" id="members">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="">
+                
                     <div class="card p-3">
                         <span>
+                            <div class="row">
+                            <div class="col-md-3">
                             <img class="rounded-circle user" src="{{ member.user.profile.profile_pic.url }}" height="30" width="30">
-                            <span class="font-weight-bold ml-2"><a href="" class="black">{{member.user.username|title}}</a></span>
-                            <a href="" class=" btn-sm orange1 text-white p-1 detail-view send-message">MESSAGE</a>
+                            <span class="font-weight-bold ml-2"><a href="{% url 'user_profile' member.user.username  %}" class="black">{{member.user.username|title}}</a></span>
+                            </div>
+                            <div class="col-md-5">
+                            <span class="ml-4 mail">Email: {{member.user.email}}</span>
+                            </div>
+                            <div class="col-md-4">
+                            <a href="" class=" btn-sm orange1 text-white p-1 detail-view send-message ">MESSAGE</a>
+                            </div>
+                            </div>
                         </span>
                     
                     </div>
-                </div>
             </div>
             
         </div>
