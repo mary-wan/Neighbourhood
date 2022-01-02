@@ -18,7 +18,7 @@
 ![Site Image](neighbour/static/photos/site3.png)
 
 ## Live link
-`https://prjawards.herokuapp.com/`
+[View site](https://neighbourh00d.herokuapp.com/)
 ## Installation
 ### Requirements
 * python3.6
