@@ -26,6 +26,11 @@ class NeighbourHood(models.Model):
 
     def delete_neighborhood(self):
         self.delete()
+        
+    def update_neighborhood(self):
+        self.update()
+    def update_occupants(self):
+        self.update()
 
     @classmethod
     def find_neighborhood(cls, neighborhood_id):
