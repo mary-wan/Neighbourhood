@@ -46,10 +46,10 @@ else:
    }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES['default'].update(db_from_env)
+# DATABASES = { 'default': dj_database_url.config() }
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -211,8 +211,3 @@ AUTHENTICATION_BACKENDS = [
 # SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
-SOCIAL_AUTH_FACEBOOK_KEY='349741963224893'
-SOCIAL_AUTH_FACEBOOK_SECRET ='8afb010d7ad7cfb8732bb40f20c66f5b'
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY='1015799356184-smku6t2gk00vu7i2v4r5t5dekbo9g9b8.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='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'
