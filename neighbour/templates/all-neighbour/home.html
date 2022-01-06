@@ -10,7 +10,10 @@
     <h6 class="intro1">This is a place where you get to know what is happening in your neighbourhood <br>
          be in the loop about everything happening in your neighborhood
     </h6>
+    {% if request.user.profile.neighbourhood %}
+    {%else%}
     <a href="{%url 'hoods'%}" class="btn mt-4 btn-warning pl-4 pr-4 font-weight-bold black">JOIN HOOD</a>
+    {%endif%}
  
 </div>
 <div class="container mt-5 mb-3">

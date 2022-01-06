@@ -13,9 +13,13 @@
         <li class="nav-item active">
           <a class="nav-link" href="/admin">Admin</a>
         </li>
+        {% if request.user.profile.neighbourhood %}
+        {%else%}
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'hoods' %}">Neighbourhoods </a>
         </li>
+        {%endif%}
+       
         {% if user.profile.neighbourhood %}
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'my_hood' user.profile.neighbourhood.id %}">{{user.profile.neighbourhood.name}} </a>
